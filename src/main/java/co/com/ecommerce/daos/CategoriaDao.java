@@ -1,6 +1,11 @@
 package co.com.ecommerce.daos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import co.com.ecommerce.entities.Categoria;
 import co.com.ecommerce.utilities.Conexion;
 
@@ -28,4 +33,12 @@ public class CategoriaDao {
 		//ConexionDB.disconnect();
 		return catego;
 	}
+	
+	public List<Categoria> listarCategorias(){
+		List<Categoria> categorias = new ArrayList<>();
+		Query consulta = entity.createQuery("SELECT c FROM Categoria c ");
+		categorias = consulta.getResultList();	
+		return categorias;
+	}
+	
 }

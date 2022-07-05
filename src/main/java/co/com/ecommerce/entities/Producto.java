@@ -1,11 +1,7 @@
 package co.com.ecommerce.entities;
 
 import java.io.Serializable;
-
-import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.*;
-import java.util.Date;
-
 /**
  * The persistent class for the producto database table.
  * 
@@ -17,6 +13,7 @@ public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne
@@ -45,9 +42,9 @@ public class Producto implements Serializable {
 	@Column(name = "descuento")
 	private double descuento;
 	
-	@Temporal(TemporalType.DATE)
-	@JsonbDateFormat(value = "yyyy-MM-dd")
-	private Date fechacreacion;
+	@Column(name = "fechacreacion")
+	private String fechaCreacion;
+	
 	@Column(name = "estado")
 	private Integer estado;
 	@Column(name = "imagen")
@@ -55,7 +52,7 @@ public class Producto implements Serializable {
 
 	public Producto(Administrador idAdministrador,Marca idMarca, Categoria idCategoria,  String nombre,
 			String caracteristicas, double valor, double iva, Integer unidadesVendidas, Integer cantidadUnidades, Integer cantidadMinima,
-			double descuento, Date fechacreacion, String imagen) {
+			double descuento, String fechacreacion, String imagen) {
 
 		this.idAdministrador = idAdministrador;
 		this.idCategoria = idCategoria;	
@@ -68,16 +65,15 @@ public class Producto implements Serializable {
 		this.cantidadUnidades = cantidadUnidades;
 		this.cantidadMinima = cantidadMinima;
 		this.descuento = descuento;
-		this.fechacreacion = fechacreacion;
+		this.fechaCreacion = fechacreacion;
 		this.imagen = imagen;
 		this.estado = 1;
 	}
 
-	public Producto(Integer id, Administrador idAdministrador, Categoria idCategoria, Marca idMarca, String nombre,
+	public Producto( Administrador idAdministrador, Categoria idCategoria, Marca idMarca, String nombre,
 			String caracteristicas, double valor, double iva, Integer unidadesVendidas, Integer cantidadUnidades,
-			Integer cantidadMinima, double descuento, Date fechacreacion, String imagen, int estado) {
+			Integer cantidadMinima, double descuento, String fechacreacion, String imagen, int estado) {
 
-		this.id = id;
 		this.idAdministrador = idAdministrador;
 		this.idCategoria = idCategoria;
 		this.idMarca = idMarca;
@@ -89,7 +85,7 @@ public class Producto implements Serializable {
 		this.cantidadUnidades = cantidadUnidades;
 		this.cantidadMinima = cantidadMinima;
 		this.descuento = descuento;
-		this.fechacreacion = fechacreacion;
+		this.fechaCreacion = fechacreacion;
 		this.imagen = imagen;
 		this.estado = estado;
 	}
@@ -177,12 +173,12 @@ public class Producto implements Serializable {
 		this.descuento = descuento;
 	}
 
-	public Date getFechacreacion() {
-		return fechacreacion;
+	public String getFechacreacion() {
+		return fechaCreacion;
 	}
 
-	public void setFechacreacion(Date fechacreacion) {
-		this.fechacreacion = fechacreacion;
+	public void setFechacreacion(String fechacreacion) {
+		this.fechaCreacion = fechacreacion;
 	}
 
 	public Integer getEstado() {
@@ -235,7 +231,7 @@ public class Producto implements Serializable {
 				+ ", idMarca=" + idMarca + ", nombre=" + nombre + ", caracteristicas=" + caracteristicas + ", valor="
 				+ valor + ", iva=" + iva + ", unidadesVendidas=" + unidadesVendidas + ", cantidadUnidades="
 				+ cantidadUnidades + ", cantidadMinima=" + cantidadMinima + ", descuento=" + descuento
-				+ ", fechacreacion=" + fechacreacion + ", estado=" + estado + ", imagen=" + imagen + "]";
+				+ ", fechacreacion=" + fechaCreacion + ", estado=" + estado + ", imagen=" + imagen + "]";
 	}
 
 }

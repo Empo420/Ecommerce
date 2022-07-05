@@ -39,7 +39,6 @@ public class ProductoServiceRs {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/crearProducto")
 	public Response agregarAlInventario( Producto producto) {
 		productoServiceImpl.agregarAlInventario(producto);

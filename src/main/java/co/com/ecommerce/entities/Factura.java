@@ -2,10 +2,6 @@ package co.com.ecommerce.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Date;
-
-
 
 /**
  * The persistent class for the factura database table.
@@ -18,6 +14,7 @@ public class Factura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne
@@ -34,19 +31,19 @@ public class Factura implements Serializable {
 	@Column(name = "cantidad")
 	private Integer cantidad;
 
-	@Temporal(TemporalType.DATE)
-	private Date fechacompra;
+	@Column(name = "fechacompra")
+	private String fechaCompra;
 
 	@Column(name = "total")
 	private double total;
 
-	public Factura(Producto producto, Venta venta, double precio, Integer cantidad, Date fechacompra, double total) {
+	public Factura(Producto producto, Venta venta, double precio, Integer cantidad, String fechacompra, double total) {
 	
 		this.producto = producto;
 		this.venta = venta;
 		this.precio = precio;
 		this.cantidad = cantidad;
-		this.fechacompra = fechacompra;
+		this.fechaCompra = fechacompra;
 		this.total = total;
 	}
 
@@ -69,12 +66,12 @@ public class Factura implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public Date getFechacompra() {
-		return this.fechacompra;
+	public String getFechacompra() {
+		return this.fechaCompra;
 	}
 
-	public void setFechacompra(Date fechacompra) {
-		this.fechacompra = fechacompra;
+	public void setFechacompra(String fechacompra) {
+		this.fechaCompra = fechacompra;
 	}
 
 	public double getPrecio() {
@@ -112,7 +109,7 @@ public class Factura implements Serializable {
 	@Override
 	public String toString() {
 		return "Factura [id=" + id + ", producto=" + producto + ", venta=" + venta + ", precio=" + precio
-				+ ", cantidad=" + cantidad + ", fechacompra=" + fechacompra + ", total=" + total + "]";
+				+ ", cantidad=" + cantidad + ", fechacompra=" + fechaCompra + ", total=" + total + "]";
 	}
 	
 	

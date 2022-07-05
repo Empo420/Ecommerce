@@ -9,7 +9,5 @@ public interface UsuarioService {
 	public void iniciarSesion(int user, String pass);
 	public void actualizarPerfil(Usuario user);
 	public boolean comprar(Venta ventas, ArrayList<Integer> idsProductos );
-	public ArrayList<Object> listarFacturasPagas(int idUsuario);
-	public ArrayList<Object> listarFacturasNoPagas(int idUsuario);
 }
 

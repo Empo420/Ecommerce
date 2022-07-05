@@ -35,7 +35,7 @@ public class testProducto {
 		Rol rol = new Rol(1, "usuario");
 		Rol rol2 = new Rol(1, "administrador");
 	
-		Administrador admin = new Administrador(1129, "alberto", "yara", "cc", empresa, "42638434030", "correo@gmail", "cra 5", "dubud88", rol2, "admin", fechas );
+		//Administrador admin = new Administrador(1129, "alberto", "yara", "cc", empresa, "42638434030", "correo@gmail", "cra 5", "dubud88", rol2, "admin", fechas );
 		Categoria categoria = new Categoria(4, "ELECTRODOMESTICOS");
 		Marca marca = new Marca(7, "SAMSUNG");
 		

@@ -1,6 +1,8 @@
 package co.com.ecommerce.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import co.com.ecommerce.daos.AdministradorDao;
 import co.com.ecommerce.daos.FacturaDao;
 import co.com.ecommerce.entities.Administrador;
@@ -38,41 +40,24 @@ public class AdministradorServiceImpl implements AdministradorService{
 	public void actuaizarAdministrador(Administrador admin) {
 		administradorDao.actualizar(admin);
 	}
+	
 
 	@Override
-	public ArrayList<Object> listarFacturasPagas(int idAdministrador) {
-		ArrayList<Object> facturasPagas = facturaDao.listarFacturasPagasAdministrador(idAdministrador);
-		return facturasPagas;
-	}
-	
-	@Override
-	public ArrayList<Object> listarFacturasNoPagas(int idAdministrador) {
-		ArrayList<Object> facturasPagas = facturaDao.listarFacturasNoPagasAdministrador(idAdministrador);
-		return facturasPagas;
+	public List<Administrador> buscarAdministradorEmpresa(int empresa) {
+		List<Administrador> admins = administradorDao.buscarAdministradorEmpresa(empresa);
+		return admins;
 	}
 
 	@Override
 	public double dineroTotal(int admin) {
-		ArrayList<Object> facturasPagas = facturaDao.listarFacturasPagasAdministrador(admin);
-		
-		double total = 0;
-		for(int i = 0; i < facturasPagas.size(); i++) {
-			Object[] registro = (Object []) facturasPagas.get(i);
-			total += Double.parseDouble(registro[3].toString());
-		}
-		return total;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public double promedio(int admin) {
-		ArrayList<Object> facturasPagas = facturaDao.listarFacturasPagasAdministrador(admin);
-		
-		double total = 0;
-		for(int i = 0; i < facturasPagas.size(); i++) {
-			Object[] registro = (Object []) facturasPagas.get(i);
-			total += Double.parseDouble(registro[3].toString());
-		}
-		return total / facturasPagas.size();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

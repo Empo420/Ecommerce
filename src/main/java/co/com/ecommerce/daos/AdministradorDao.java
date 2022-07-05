@@ -63,10 +63,10 @@ public class AdministradorDao {
 		//ConexionDB.disconnect();
 	}
 	
-	public List<Administrador> buscarAdministradorEmpresa(Empresa empresa) {
+	public List<Administrador> buscarAdministradorEmpresa(int empresa) {
 		List<Administrador> administradores = new ArrayList<>();
 		
-		Query consulta = entity.createQuery("SELECT ad FROM Administrador ad WHERE ad.idempresa =" + empresa.getNit() + " AND ad.estado = 1");
+		Query consulta = entity.createQuery("SELECT ad FROM Administrador ad WHERE idempresa =" + empresa + " AND estado = 1");
 		administradores = consulta.getResultList();	
 		
 		return administradores;

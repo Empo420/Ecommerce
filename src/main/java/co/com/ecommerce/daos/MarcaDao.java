@@ -1,6 +1,12 @@
 package co.com.ecommerce.daos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import co.com.ecommerce.entities.Categoria;
 import co.com.ecommerce.entities.Marca;
 import co.com.ecommerce.utilities.Conexion;
 
@@ -26,5 +32,12 @@ public class MarcaDao {
 	
 		//ConexionDB.disconnect();
 		return marca;
+	}
+	
+	public List<Marca> listarMarcas(){
+		List<Marca> marcas = new ArrayList<>();
+		Query consulta = entity.createQuery("SELECT m FROM Marca m ");
+		marcas = consulta.getResultList();	
+		return marcas;
 	}
 }

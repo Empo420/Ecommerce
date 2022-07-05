@@ -77,7 +77,7 @@ public class TestVenta {
 		System.out.println("--------Ventas no pagas------------");
 		System.out.println();
 		
-		List<Venta> ventaNoPagas = venta.buscarVentaNoPagas(1102, fechaCreacion);
+		List<Venta> ventaNoPagas = venta.buscarVentaNoPagas(1102);
 		Venta venta1 = null;
 		for(int i = 0; i < ventaNoPagas.size(); i++) {
 			venta1 = ventaNoPagas.get(i);

@@ -13,7 +13,7 @@ public class testUsuario {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UsuarioDao user = new UsuarioDao();
+		/*UsuarioDao user = new UsuarioDao();
 		Rol rol = new Rol();
 		rol.setId(1);
 		
@@ -43,7 +43,7 @@ public class testUsuario {
 		//eliminar Usuario
 		user.eliminar(1102);
 		
-		Conexion.disconnect();
+		Conexion.disconnect();*/
 	}
 
 }

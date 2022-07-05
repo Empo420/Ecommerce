@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import co.com.ecommerce.entities.Pais;
 import co.com.ecommerce.entities.Usuario;
 import co.com.ecommerce.entities.Venta;
 import co.com.ecommerce.utilities.Conexion;
@@ -18,9 +20,9 @@ public class VentaDao {
 		entity.getTransaction().commit();
 	}
 	
-	public List<Venta> buscarVentaNoPagas(int user, Date fecha ) {
+	public List<Venta> buscarVentaNoPagas(int user) {
 		List<Venta> listaVentass = new ArrayList<>();
-		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE idusuario = " + user + "AND fechaventa = " + fecha + " AND estadoventa = 1");
+		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE idusuario = " + user + " AND estadoventa = 1");
 		listaVentass = consulta.getResultList();		
 		return listaVentass;
 	}
@@ -28,6 +30,13 @@ public class VentaDao {
 	public List<Venta> buscarVentaPagas(int user, Date fecha ) {
 		List<Venta> listaVentass = new ArrayList<>();
 		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE idusuario = " + user + "AND fechaventa = " + fecha + " AND estadoventa = 2");
+		listaVentass = consulta.getResultList();		
+		return listaVentass;
+	}
+	
+	public List<Venta> listarVentas() {
+		List<Venta> listaVentass = new ArrayList<>();
+		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE estadoventa = 1");
 		listaVentass = consulta.getResultList();		
 		return listaVentass;
 	}
@@ -59,5 +68,15 @@ public class VentaDao {
 			entity.merge(venta);
 			entity.getTransaction().commit();
 		}
+	}
+	
+	public Venta buscarVenta(int idVenta) {
+		Venta venta = new Venta();
+		venta = entity.find(Venta.class, idVenta);
+		if(venta.getEstadoventa() != 0) {
+			return venta;
+		}
+		//ConexionDB.disconnect();
+		return null;
 	}
 }

@@ -13,7 +13,7 @@ public class TestAdministrador {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		AdministradorDao controlador = new AdministradorDao();
+	/*	AdministradorDao controlador = new AdministradorDao();
 		
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date fechas = new Date();
@@ -56,7 +56,7 @@ public class TestAdministrador {
 			System.out.println(admin1.toString());
 		}
 		
-		controlador.eliminar(1129);
+		controlador.eliminar(1129);*/
 	}
 
 }

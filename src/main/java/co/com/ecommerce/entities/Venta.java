@@ -2,7 +2,6 @@ package co.com.ecommerce.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * The persistent class for the ventas database table.
@@ -15,51 +14,56 @@ public class Venta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@ManyToOne
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
+	
 	@ManyToOne
 	@JoinColumn(name = "idmetodopago")
 	private Metodopago metodopago;
+	
 	@ManyToOne
 	@JoinColumn(name = "idciudad")
 	private Ciudad ciudad;
 
+	@Column(name = "correoenvio")
+	private String correoEnvio;
+	
 	@Column(name = "direccionenvio")
 	private String direccionEnvio;
 
-	@Column(name = "correoenvio")
-	private String correoEnvio;
-
-	@Temporal(TemporalType.DATE)
-	private Date fechaventa;
+	@Column(name = "fechaventa")
+	private String fechaVenta;
+	
 	@Column(name = "estadoventa")
-	private Integer estadoventa;
+	private Integer estadoVenta;
 
-	public Venta(Integer id, Usuario usuario, Metodopago metodopago, Ciudad ciudad, String direccionEnvio, String correoEnvio,
-			Date fechaventa) {
-		
-		this.id = id;
+	
+	public Venta( Usuario usuario, Metodopago metodopago, Ciudad ciudad, String correoEnvio,
+			String direccionEnvio, String fechaVenta, Integer estadoVenta) {
+
 		this.usuario = usuario;
 		this.metodopago = metodopago;
 		this.ciudad = ciudad;
-		this.direccionEnvio = direccionEnvio;
 		this.correoEnvio = correoEnvio;
-		this.fechaventa = fechaventa;
-		this.estadoventa = 1;
+		this.direccionEnvio = direccionEnvio;
+		this.fechaVenta = fechaVenta;
+		this.estadoVenta = estadoVenta;
 	}
 	
-	public Venta(Usuario usuario, Metodopago metodopago, Ciudad ciudad, String direccionEnvio, String correoEnvio,
-			Date fechaventa) {
-		
+	public Venta( Usuario usuario, Metodopago metodopago, Ciudad ciudad, String correoEnvio,
+			String direccionEnvio, String fechaVenta) {
+
 		this.usuario = usuario;
 		this.metodopago = metodopago;
 		this.ciudad = ciudad;
-		this.direccionEnvio = direccionEnvio;
 		this.correoEnvio = correoEnvio;
-		this.fechaventa = fechaventa;
-		this.estadoventa = 1;
+		this.direccionEnvio = direccionEnvio;
+		this.fechaVenta = fechaVenta;
+		this.estadoVenta = 1;
 	}
 
 	public Venta() {
@@ -113,33 +117,25 @@ public class Venta implements Serializable {
 		this.correoEnvio = correoEnvio;
 	}
 
-	public Date getFechaventa() {
-		return fechaventa;
+	public String getFechaventa() {
+		return fechaVenta;
 	}
 
-	public void setFechaventa(Date fechaventa) {
-		this.fechaventa = fechaventa;
+	public void setFechaventa(String fechaventa) {
+		this.fechaVenta = fechaventa;
 	}
 
 	public Integer getEstadoventa() {
-		return estadoventa;
+		return estadoVenta;
 	}
 
 	public void setEstadoventa(Integer estadoventa) {
-		this.estadoventa = estadoventa;
+		this.estadoVenta = estadoventa;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	@Override
-	public String toString() {
-		return "Venta [id=" + id + ", usuario=" + usuario + ", metodopago=" + metodopago + ", ciudad=" + ciudad
-				+ ", direccionEnvio=" + direccionEnvio + ", correoEnvio=" + correoEnvio + ", fechaventa=" + fechaventa
-				+ ", estadoventa=" + estadoventa + "]";
-	}
-	
-	
 
 }

@@ -65,16 +65,5 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return compro;
 	}
 
-	@Override
-	public ArrayList<Object> listarFacturasPagas(int idUsuario) {
-		ArrayList<Object> facturasPagas = facturaDao.listarFacturasPagasUsuario(idUsuario);
-		return facturasPagas;
-	}
-
-	@Override
-	public ArrayList<Object> listarFacturasNoPagas(int idUsuario) {
-		ArrayList<Object> facturasPagas = facturaDao.listarFacturasNoPagasUsuario(idUsuario);
-		return facturasPagas;
-	}
 
 }

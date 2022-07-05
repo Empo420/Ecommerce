@@ -34,7 +34,7 @@ public class VentaServiceImpl implements VentaService{
 		ArrayList<Integer> productos = idsProductos;
 		Collections.sort(productos);
 		
-		List<Venta> venta = ventaDao.buscarVentaNoPagas(ventas.getUsuario().getIdentificacion(), ventas.getFechaventa());
+		List<Venta> venta = ventaDao.buscarVentaNoPagas(ventas.getUsuario().getIdentificacion());
 		
 		for(int i = 0; i < venta.size(); i++) {
 			Venta ventaEncontrada =  venta.get(i);
@@ -60,7 +60,7 @@ public class VentaServiceImpl implements VentaService{
 	@Override
 	public boolean venderProductos(int estado, int usuario, Date fecha) {
 		boolean compro = false;
-		List<Venta> venta = ventaDao.buscarVentaNoPagas(usuario, fecha);
+		List<Venta> venta = ventaDao.buscarVentaNoPagas(usuario);
 		for(int i = 0; i < venta.size(); i++) {
 			Venta ventaEncontrada = venta.get(i);
 			
@@ -69,6 +69,36 @@ public class VentaServiceImpl implements VentaService{
 			compro = true;
 		}
 		return compro;
+	}
+
+	@Override
+	public List<Venta> listarVentasPagas(int user, Date fecha) {
+		List<Venta> venta = new ArrayList<Venta>();
+		venta = ventaDao.buscarVentaPagas(user, fecha);
+		return venta;
+	}
+
+	@Override
+	public List<Venta> listarVentasNoPagas(int user) {
+		List<Venta> venta = ventaDao.buscarVentaNoPagas(user);
+		return venta;
+	}
+
+	@Override
+	public List<Venta> listarVentas() {
+		List<Venta> venta = ventaDao.listarVentas();
+		return venta;
+	}
+
+	@Override
+	public void CrearVenta(Venta venta) {
+		ventaDao.crearVenta(venta);
+	}
+
+	@Override
+	public Venta buscarVenta(int idVenta) {
+		Venta venta = ventaDao.buscarVenta(idVenta);
+		return venta;
 	}
 
 

@@ -11,7 +11,7 @@
 		<class>co.com.ecommerce.entities.Categoria</class>
 		<class>co.com.ecommerce.entities.Ciudad</class>
 		<class>co.com.ecommerce.entities.Departamento</class>
-	
+		<class>co.com.ecommerce.entities.DetalleVenta</class>
 		<class>co.com.ecommerce.entities.Empresa</class>
 		<class>co.com.ecommerce.entities.Factura</class>
 		<class>co.com.ecommerce.entities.Marca</class>

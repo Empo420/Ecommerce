@@ -9,35 +9,44 @@ import java.util.Date;
  * The persistent class for the "detalleVenta" database table.
  * 
  */
-/*@Entity
-@Table(name="\"detalleVenta\"")
+@Entity
+@Table(name="\"detalleVenta\"", schema = "ecommerce")
 @NamedQuery(name="DetalleVenta.findAll", query="SELECT d FROM DetalleVenta d")
 public class DetalleVenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="\"precioProducto\"")
+	@Id
+	private int idVenta;
+	
+	@Column(name="idUsuario")
+	private Usuario idUsuario;
+	
+	@Column(name="idAdministrador")
+	private Administrador idAdministrador;
+	
+	@Column(name="precioProducto")
 	private double precioProducto;
 	
-	@Column(name="\"CantidadCompra\"")
+	@Column(name="CantidadCompra")
 	private Integer cantidadCompra;
 	
-	@Column(name="\"totalCompra\"")
+	@Column(name="totalCompra")
 	private double totalCompra;
 	
-	@Column(name="\"nombreProducto\"")
+	@Column(name= "nombreProducto")
 	private String nombreProducto;
 	
-	@Column(name="\"nombreEmpresa\"")
+	@Column(name="nombreEmpresa")
 	private String nombreEmpresa;
 
-	@Column(name="\"estadoVenta\"")
+	@Column(name="estadoVenta")
 	private Integer estadoVenta;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="\"fechaCompra\"")
-	private Date fechaCompra;
 
-	@Column(name="\"nombreUsuario\"")
+	@Column(name="fechaCompra")
+	private String fechaCompra;
+
+	@Column(name="nombreUsuario")
 	private String nombreUsuario;
 
 	public DetalleVenta() {
@@ -59,11 +68,11 @@ public class DetalleVenta implements Serializable {
 		this.estadoVenta = estadoVenta;
 	}
 
-	public Date getFechaCompra() {
+	public String getFechaCompra() {
 		return this.fechaCompra;
 	}
 
-	public void setFechaCompra(Date fechaCompra) {
+	public void setFechaCompra(String fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
 
@@ -107,4 +116,32 @@ public class DetalleVenta implements Serializable {
 		this.totalCompra = totalCompra;
 	}
 
-}*/
+	public int getIdVenta() {
+		return idVenta;
+	}
+
+	public void setIdVenta(int idVenta) {
+		this.idVenta = idVenta;
+	}
+
+	public Usuario getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Usuario idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Administrador getIdAdministrador() {
+		return idAdministrador;
+	}
+
+	public void setIdAdministrador(Administrador idAdministrador) {
+		this.idAdministrador = idAdministrador;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+}

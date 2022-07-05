@@ -2,7 +2,6 @@ package co.com.ecommerce.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 
@@ -23,8 +22,10 @@ public class Usuario implements Serializable {
 	private String nombre;
 	@Column(name="apellido")
 	private String apellido;
+	
 	@Column(name="tipoidentificacion")
 	private String tipoDeIdentificacion;
+	
 	@Column(name="telefono")
 	private String telefono;
 	@Column(name="correo")
@@ -40,8 +41,9 @@ public class Usuario implements Serializable {
 	
 	@Column(name="contrasenia")
 	private String contrasenia;
-	@Temporal(TemporalType.DATE)
-	private Date fechanacimiento;
+
+	@Column(name="fechanacimiento")
+	private String fechanacimiento;
 	@Column(name="estado")
 	private Integer estado;
 	
@@ -55,7 +57,7 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(Integer identificacion, String nombre, String apellido, String tipoDeIdentificacion, String telefono,
-			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, Date fechanacimiento) {
+			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, String fechanacimiento) {
 		super();
 		this.identificacion = identificacion;
 		this.nombre = nombre;
@@ -71,8 +73,23 @@ public class Usuario implements Serializable {
 		this.estado = 1;
 	}
 
-
-
+	public Usuario(Integer identificacion, String nombre, String apellido, String tipoDeIdentificacion, String telefono,
+			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, String fechanacimiento,
+			Integer estado) {
+		super();
+		this.identificacion = identificacion;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDeIdentificacion = tipoDeIdentificacion;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.direccion = direccion;
+		this.codigoPostal = codigoPostal;
+		this.idRol = idRol;
+		this.contrasenia = contrasenia;
+		this.fechanacimiento = fechanacimiento;
+		this.estado = estado;
+	}
 
 	public Integer getIdentificacion() {
 		return identificacion;
@@ -174,12 +191,12 @@ public class Usuario implements Serializable {
 	}
 
 
-	public Date getFechanacimiento() {
+	public String getFechanacimiento() {
 		return fechanacimiento;
 	}
 
 
-	public void setFechanacimiento(Date fechanacimiento) {
+	public void setFechanacimiento(String fechanacimiento) {
 		this.fechanacimiento = fechanacimiento;
 	}
 

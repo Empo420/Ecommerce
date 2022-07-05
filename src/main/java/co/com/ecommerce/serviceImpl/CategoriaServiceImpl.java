@@ -1,5 +1,6 @@
 package co.com.ecommerce.serviceImpl;
 
+import java.util.List;
 import co.com.ecommerce.daos.CategoriaDao;
 import co.com.ecommerce.entities.Categoria;
 import co.com.ecommerce.services.CategoriaService;
@@ -27,6 +28,12 @@ public class CategoriaServiceImpl implements CategoriaService{
 	@Override
 	public void actualizarCategoria(Categoria catego) {
 		categoriaDao.actualizar(catego);
+	}
+
+	@Override
+	public List<Categoria> listarCategorias() {
+		List<Categoria> categorias = categoriaDao.listarCategorias();
+		return categorias;
 	}
 
 }

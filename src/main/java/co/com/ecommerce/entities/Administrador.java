@@ -40,11 +40,9 @@ public class Administrador implements Serializable {
 	
 	@Column(name="contrasenia")
 	private String contrasenia;
-	@Column(name="fechanacimiento")
 	
-	@Temporal(TemporalType.DATE)
-	@JsonbDateFormat(value = "yyyy-MM-dd")
-	private Date fechaDeNacimiento;
+	@Column(name="fechanacimiento")
+	private String fechaDeNacimiento;
 	@Column(name="estado")
 	private int estado;
 
@@ -52,7 +50,7 @@ public class Administrador implements Serializable {
 
 	public Administrador(Integer identificacion, String nombre, String apellido, String tipoIdentificacion,
 			Empresa idEmpresa, String telefono, String correo, String direccion, String codigoPostal, Rol idRol,
-			String contrasenia, Date fechaDeNacimiento) {
+			String contrasenia, String fechaDeNacimiento) {
 		
 		this.identificacion = identificacion;
 		this.nombre = nombre;
@@ -71,8 +69,8 @@ public class Administrador implements Serializable {
 	
 	public Administrador(Integer identificacion, String nombre, String apellido, String tipoIdentificacion,
 			Empresa idEmpresa, String telefono, String correo, String direccion, String codigoPostal, Rol idRol,
-			String contrasenia, Date fechaDeNacimiento, int estado) {
-		super();
+			String contrasenia, String fechaDeNacimiento, int estado) {
+		
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -227,13 +225,13 @@ public class Administrador implements Serializable {
 
 
 
-	public Date getFechaDeNacimiento() {
+	public String getFechaDeNacimiento() {
 		return fechaDeNacimiento;
 	}
 
 
 
-	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+	public void setFechaDeNacimiento(String fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 

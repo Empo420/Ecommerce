@@ -1,5 +1,7 @@
 package co.com.ecommerce.serviceImpl;
 
+import java.util.List;
+
 import co.com.ecommerce.daos.MarcaDao;
 import co.com.ecommerce.entities.Marca;
 import co.com.ecommerce.services.MarcaService;
@@ -26,6 +28,12 @@ public class MarcaServiceImpl implements MarcaService {
 	public Marca buscarMarca(int marca) {
 		Marca marcas = new Marca();
 		marcas = marcaDao.buscarMarca(marca);
+		return marcas;
+	}
+
+	@Override
+	public List<Marca> listarMarcas() {
+		List<Marca> marcas = marcaDao.listarMarcas();
 		return marcas;
 	}
 

@@ -12,23 +12,16 @@ public class Ciudad implements Serializable {
 
 	@Id
 	private Integer id;
+	
 	@Column(name="ciudades")
 	private String ciudades;
 
-	
 	@ManyToOne
 	@JoinColumn(name="iddepartamento")
 	private Departamento departamento;
 
-	//bi-directional many-to-one association to Venta
-	@OneToMany(mappedBy="ciudad")
-	private List<Venta> ventas;
-
-	
-	
-	
 	public Ciudad(Integer id, Departamento departamento, String ciudades ) {
-		super();
+	
 		this.id = id;
 		this.ciudades = ciudades;
 		this.departamento = departamento;
@@ -59,34 +52,6 @@ public class Ciudad implements Serializable {
 
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
-	}
-
-	public List<Venta> getVentas() {
-		return this.ventas;
-	}
-
-	public void setVentas(List<Venta> ventas) {
-		this.ventas = ventas;
-	}
-
-	public Venta addVenta(Venta venta) {
-		getVentas().add(venta);
-		venta.setCiudad(this);
-
-		return venta;
-	}
-
-	public Venta removeVenta(Venta venta) {
-		getVentas().remove(venta);
-		venta.setCiudad(null);
-
-		return venta;
-	}
-
-	@Override
-	public String toString() {
-		return "Ciudad [id=" + id + ", ciudades=" + ciudades + ", departamento=" + departamento + ", ventas=" + ventas
-				+ "]";
 	}
 
 }

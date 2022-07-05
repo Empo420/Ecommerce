@@ -105,7 +105,7 @@ public class TestFactura {
 		
 		System.out.println(fechaCreacion);
 		
-		List<Factura> facturas = controlador.buscarFacturaVenta(1, fechaCreacion);
+		/*List<Factura> facturas = controlador.buscarFacturaVenta(1, fechaCreacion);
 		Factura factura1 = null;
 		for(int i = 0; i < facturas.size(); i++) {
 			factura1 = facturas.get(i);
@@ -116,7 +116,7 @@ public class TestFactura {
 		System.out.println("--------buscar Factura venta------------");
 		System.out.println();
 		
-		
+		*/
 		
 		/*ArrayList<Object> lista = controlador.listarFacturasNoPagasAdministrador(ventaCreada, admin);
 		Object listaFac = null;
