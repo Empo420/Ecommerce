@@ -22,7 +22,7 @@ public class VentaDao {
 	
 	public List<Venta> buscarVentaNoPagas(int user) {
 		List<Venta> listaVentass = new ArrayList<>();
-		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE idusuario = " + user + " AND estadoventa = 1");
+		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE idUsuario = " + user + " AND estadoVenta = 1");
 		listaVentass = consulta.getResultList();		
 		return listaVentass;
 	}
@@ -36,7 +36,7 @@ public class VentaDao {
 	
 	public List<Venta> listarVentas() {
 		List<Venta> listaVentass = new ArrayList<>();
-		Query consulta = entity.createQuery("SELECT vt FROM Venta vt WHERE estadoventa = 1");
+		Query consulta = entity.createQuery("SELECT vt FROM Venta vt");
 		listaVentass = consulta.getResultList();		
 		return listaVentass;
 	}

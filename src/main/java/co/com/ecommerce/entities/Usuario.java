@@ -2,9 +2,6 @@ package co.com.ecommerce.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
-
-
 /**
  * The persistent class for the usuario database table.
  * 
@@ -47,18 +44,13 @@ public class Usuario implements Serializable {
 	@Column(name="estado")
 	private Integer estado;
 	
-	
-
-	//bi-directional many-to-one association to Venta
-	@OneToMany(mappedBy="usuario")
-	private List<Venta> ventas;
 
 	public Usuario() {
 	}
 
 	public Usuario(Integer identificacion, String nombre, String apellido, String tipoDeIdentificacion, String telefono,
 			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, String fechanacimiento) {
-		super();
+		
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -76,7 +68,7 @@ public class Usuario implements Serializable {
 	public Usuario(Integer identificacion, String nombre, String apellido, String tipoDeIdentificacion, String telefono,
 			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, String fechanacimiento,
 			Integer estado) {
-		super();
+	
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -214,39 +206,5 @@ public class Usuario implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
-	public List<Venta> getVentas() {
-		return this.ventas;
-	}
-
-	public void setVentas(List<Venta> ventas) {
-		this.ventas = ventas;
-	}
-
-	public Venta addVenta(Venta venta) {
-		getVentas().add(venta);
-		venta.setUsuario(this);
-
-		return venta;
-	}
-
-	public Venta removeVenta(Venta venta) {
-		getVentas().remove(venta);
-		venta.setUsuario(null);
-
-		return venta;
-	}
-
-	@Override
-	public String toString() {
-		return "Usuario [identificacion=" + identificacion + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", tipoDeIdentificacion=" + tipoDeIdentificacion + ", telefono=" + telefono + ", correo=" + correo
-				+ ", direccion=" + direccion + ", codigoPostal=" + codigoPostal + ", idRol=" + idRol + ", contrasenia="
-				+ contrasenia + ", fechanacimiento=" + fechanacimiento + ", estado=" + estado + ", ventas=" + ventas
-				+ "]";
-	}
-	
-	
 
 }

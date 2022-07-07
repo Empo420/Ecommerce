@@ -1,9 +1,6 @@
 package co.com.ecommerce.servicesRs;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -36,7 +33,7 @@ public class VentaServiceRs {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/ventasNoPagas/{idUser}")
-	public List<Venta> listarVentasNoPagas(@PathParam("idUser")int user ) {
+	public List<Venta> listarVentasNoPagas(@PathParam("idUser") int user ) {
 		List<Venta> venta = ventaServiceImpl.listarVentasNoPagas(user);
 		return venta;
 	}
@@ -52,7 +49,7 @@ public class VentaServiceRs {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/buscarVenta/{idVenta}")
-	public Venta buscarVenta(@PathParam("idVenta")int idVenta) {
+	public Venta buscarVenta(@PathParam("idVenta") int idVenta) {
 		Venta venta = ventaServiceImpl.buscarVenta(idVenta);
 		return venta;
 	}

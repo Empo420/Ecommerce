@@ -16,7 +16,8 @@ public class DetalleVenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idVenta;
+	@Column(name="idVenta")
+	private Venta idVenta;
 	
 	@Column(name="idUsuario")
 	private Usuario idUsuario;
@@ -51,6 +52,26 @@ public class DetalleVenta implements Serializable {
 
 	public DetalleVenta() {
 	}
+	
+	public DetalleVenta(Venta idVenta, Usuario idUsuario, Administrador idAdministrador, double precioProducto,
+			Integer cantidadCompra, double totalCompra, String nombreProducto, String nombreEmpresa,
+			Integer estadoVenta, String fechaCompra, String nombreUsuario) {
+		
+		this.idVenta = idVenta;
+		this.idUsuario = idUsuario;
+		this.idAdministrador = idAdministrador;
+		this.precioProducto = precioProducto;
+		this.cantidadCompra = cantidadCompra;
+		this.totalCompra = totalCompra;
+		this.nombreProducto = nombreProducto;
+		this.nombreEmpresa = nombreEmpresa;
+		this.estadoVenta = estadoVenta;
+		this.fechaCompra = fechaCompra;
+		this.nombreUsuario = nombreUsuario;
+	}
+
+
+
 
 	public Integer getCantidadCompra() {
 		return this.cantidadCompra;
@@ -116,11 +137,11 @@ public class DetalleVenta implements Serializable {
 		this.totalCompra = totalCompra;
 	}
 
-	public int getIdVenta() {
+	public Venta getIdVenta() {
 		return idVenta;
 	}
 
-	public void setIdVenta(int idVenta) {
+	public void setIdVenta(Venta idVenta) {
 		this.idVenta = idVenta;
 	}
 

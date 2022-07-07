@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name = "\"ventas\"", schema = "ecommerce")
+@Table(name = "\"venta\"", schema = "ecommerce")
 @NamedQuery(name = "Venta.findAll", query = "SELECT v FROM Venta v")
 public class Venta implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -64,6 +64,19 @@ public class Venta implements Serializable {
 		this.direccionEnvio = direccionEnvio;
 		this.fechaVenta = fechaVenta;
 		this.estadoVenta = 1;
+	}
+	
+	public Venta(Integer id, Usuario usuario, Metodopago metodopago, Ciudad ciudad, String correoEnvio,
+			String direccionEnvio, String fechaVenta, Integer estadoVenta) {
+	
+		this.id = id;
+		this.usuario = usuario;
+		this.metodopago = metodopago;
+		this.ciudad = ciudad;
+		this.correoEnvio = correoEnvio;
+		this.direccionEnvio = direccionEnvio;
+		this.fechaVenta = fechaVenta;
+		this.estadoVenta = estadoVenta;
 	}
 
 	public Venta() {

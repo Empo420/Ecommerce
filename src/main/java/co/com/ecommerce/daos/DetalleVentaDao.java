@@ -14,7 +14,7 @@ public class DetalleVentaDao {
 
 	public List<DetalleVenta> listarFacturasNoPagasUsuario(int user) {
 		List<DetalleVenta> detalle = new ArrayList<>();
-		Query consulta = entity.createQuery("SELECT dv FROM DetalleVenta dv WHERE idUsuario = " + user + "AND estadoVenta = 1");
+		Query consulta = entity.createQuery("SELECT dv FROM DetalleVenta dv WHERE idusuario = " + user + "AND estadoventa = 1");
 		detalle =  consulta.getResultList();
 		return detalle;
 	}
