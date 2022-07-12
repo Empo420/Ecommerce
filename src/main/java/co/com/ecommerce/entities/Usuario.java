@@ -49,7 +49,7 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(Integer identificacion, String nombre, String apellido, String tipoDeIdentificacion, String telefono,
-			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, String fechanacimiento) {
+			String correo, String direccion, String codigoPostal, String contrasenia, String fechanacimiento) {
 		
 		this.identificacion = identificacion;
 		this.nombre = nombre;
@@ -59,16 +59,17 @@ public class Usuario implements Serializable {
 		this.correo = correo;
 		this.direccion = direccion;
 		this.codigoPostal = codigoPostal;
-		this.idRol = idRol;
+		this.idRol = new Rol(1, "usuario");
 		this.contrasenia = contrasenia;
 		this.fechanacimiento = fechanacimiento;
 		this.estado = 1;
 	}
-
+	
+	
 	public Usuario(Integer identificacion, String nombre, String apellido, String tipoDeIdentificacion, String telefono,
 			String correo, String direccion, String codigoPostal, Rol idRol, String contrasenia, String fechanacimiento,
 			Integer estado) {
-	
+		
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;

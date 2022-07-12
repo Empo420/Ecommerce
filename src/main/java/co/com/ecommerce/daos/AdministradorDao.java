@@ -7,14 +7,23 @@ import javax.persistence.Query;
 import co.com.ecommerce.entities.Administrador;
 import co.com.ecommerce.entities.Empresa;
 import co.com.ecommerce.utilities.Conexion;
+import co.com.ecommerce.utilities.Md5Encript;
 
 
 
 public class AdministradorDao {
 	EntityManager entity = Conexion.getEntityManagerFactory().createEntityManager();
+	private Md5Encript md5;
 	
+	public AdministradorDao() {
+		md5 = new Md5Encript();
+	}
 	
 	public void registrarAdministrador(Administrador admin) {
+		String pass = admin.getContrasenia();
+		String ecriptacion = md5.decode(pass);
+
+		admin.setContrasenia(ecriptacion);
 		entity.getTransaction().begin();
 		entity.persist(admin);
 		entity.getTransaction().commit();
@@ -34,6 +43,9 @@ public class AdministradorDao {
 		Administrador administrador= new Administrador();
 		administrador = entity.find(Administrador.class, admin);
 		if(administrador.getEstado() != 0) {
+			String pass = administrador.getContrasenia();
+			String desencriptacion = md5.decript(pass);
+			administrador.setContrasenia(desencriptacion);
 			return administrador;
 		}
 		//ConexionDB.disconnect();

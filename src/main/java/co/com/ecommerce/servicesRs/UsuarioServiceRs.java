@@ -1,9 +1,11 @@
 package co.com.ecommerce.servicesRs;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,7 +19,6 @@ import co.com.ecommerce.serviceImpl.UsuarioServiceImpl;
 public class UsuarioServiceRs {
 
 	private UsuarioServiceImpl usuarioServiceImpl;
-	private static Logger log = Logger.getLogger(UsuarioServiceRs.class);
 	
 	public UsuarioServiceRs() {
 		usuarioServiceImpl = new UsuarioServiceImpl();
@@ -27,9 +28,7 @@ public class UsuarioServiceRs {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/crearUser")
 	public Response crearUsuario(Usuario user) {
-		log.info("se esta creando un usuario");
 		usuarioServiceImpl.crearCuenta(user);
-		log.info("se creo el usuario");
 		return Response.ok().entity(user).build();
 	}
 	
@@ -40,5 +39,13 @@ public class UsuarioServiceRs {
 	public Response actualizarDatos(Usuario user) {
 		usuarioServiceImpl.actualizarPerfil(user);
 		return Response.ok(user).build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/buscarUser/{idUsuario}")
+	public Usuario buscarUsuario(@PathParam("idUsuario") int idUsuario) {
+		Usuario usuario = usuarioServiceImpl.buscarUsuario(idUsuario);
+		return usuario;
 	}
 }

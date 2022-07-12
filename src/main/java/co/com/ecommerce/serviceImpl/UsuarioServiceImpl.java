@@ -65,5 +65,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return compro;
 	}
 
+	@Override
+	public Usuario buscarUsuario(int idUsuario) {
+		Usuario usuario = usuarioDao.buscar(idUsuario);
+		return usuario;
+	}
+
 
 }
